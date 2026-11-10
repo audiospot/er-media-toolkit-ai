@@ -9,13 +9,13 @@ ER Media ToolKit ("ER"), a desktop app by AudioSpot Creative Tools that converts
 them, asking before anything that installs or changes something on their computer, and end with a short
 report that you are ready (step 6).
 
-Current ER version: 3.0.33. Files of this version (also on the repository's latest release page,
+Current ER version: 3.0.35. Files of this version (also on the repository's latest release page,
 https://github.com/audiospot/er-media-toolkit-ai/releases/latest, with `SHA256SUMS.txt`):
-- macOS app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.33/ER_Media_ToolKit_3.0.33.dmg
-- Windows app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.33/ER_Media_ToolKit_3.0.33_Windows.zip
+- macOS app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.35/ER_Media_ToolKit_3.0.35.dmg
+- Windows app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.35/ER_Media_ToolKit_3.0.35_Windows.zip
   (the installer is inside)
-- Claude Desktop extension: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.33/ER_Media_ToolKit_3.0.33.mcpb
-- Agent Skill (optional): https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.33/ER_Media_ToolKit_3.0.33_Skill.zip
+- Claude Desktop extension: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.35/ER_Media_ToolKit_3.0.35.mcpb
+- Agent Skill (optional): https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.35/ER_Media_ToolKit_3.0.35_Skill.zip
 
 ER itself makes no network connection for you and opens no port: you connect to a small program inside
 the installed app, `er-cli`, over MCP (stdio), or run it as a command line.
@@ -27,7 +27,7 @@ Below, PROGRAM means that full path (the macOS path has spaces: quote it).
 
 Before you start, tell the person in a few words what they will be asked to do, so nothing comes as a
 surprise halfway:
-- approve, in your own app, the download and the change to your settings;
+- approve, in their assistant app (yours), the download and the change to that app's settings;
 - if ER must be installed or updated: open the installer you downloaded and agree to ER's licence
   agreement themselves (it is shown by the macOS disk image and by the Windows installer; only they can
   accept it);
@@ -59,13 +59,13 @@ What decides it is the MODE you run in, not the app's name:
 
 Run `"PROGRAM" --version` (it prints `er-cli <version>`). If PROGRAM does not exist, ER is not installed,
 or it is a version without the door for assistants: it must be installed or updated. If the version is
-older than 3.0.33, offer the update.
+older than 3.0.35, offer the update.
 - Ask the person first. Then download the file for their system (above) and check it against
   `SHA256SUMS.txt`.
 - macOS: open the .dmg for the person (`open <file>.dmg`): macOS shows ER's licence agreement; the person
   reads it and clicks Agree, then drags ER Media ToolKit onto Applications (replacing an older ER keeps its
   settings and setups: they are not inside the app). Then detach the disk image.
-- Windows: extract the zip and open the `ER Media ToolKit_3.0.33_x64-setup.exe` inside for the
+- Windows: extract the zip and open the `ER Media ToolKit_3.0.35_x64-setup.exe` inside for the
   person: the installer shows ER's licence agreement; the person clicks I Agree and finishes the
   installation (per user, no administrator rights).
 - Never accept the licence agreement for the person, and never install silently.
@@ -74,12 +74,13 @@ Then run `"PROGRAM" --version` again.
 
 ## 3. Has the person opened ER, and may it work?
 
-Run `"PROGRAM" status` (JSON). Look at:
-- `app_opened_before` false (and `message` "ER Media ToolKit has not been opened on this computer yet.
-  Open it once, then try again."): ask the person to open ER once, then run `status` again.
-- `allows_work` false: ER needs its trial or a licence on this computer. Tell the person `message`. Only
-  they can start the trial or enter the licence key, in the ER window. You cannot activate, buy or start a
-  trial.
+Run `"PROGRAM" status` (JSON; it always ends with exit code 0, the state is inside). Look at:
+- `allows_work` false: ER needs its trial or a licence on this computer. Tell the person `message` (on a new
+  computer it is "ER Media ToolKit is not activated on this computer. Open ER Media ToolKit to start the trial
+  or enter your licence key.", also when ER was never opened). Only they can start the trial or enter the
+  licence key, in the ER window. You cannot activate, buy or start a trial. Then run `status` again.
+- `app_opened_before` false with `allows_work` true (and `message` "ER Media ToolKit has not been opened on this
+  computer yet. Open it once, then try again."): ask the person to open ER once, then run `status` again.
 - `tool_levels`: each tool's level (`pro`, `essentials` or `locked`). Tell the person what their licences
   cover.
 
@@ -110,7 +111,7 @@ atomic rewrite).
   `{"servers": {"er-media-toolkit": {"type": "stdio", "command": "PROGRAM", "args": ["mcp"]}}}`
 - Another assistant: add a local (stdio) MCP server with that command and argument, in its own way.
 - No MCP at all but a terminal: use the command line directly (`"PROGRAM" help`); every command prints
-  one JSON object.
+  one JSON object, except `help` and `guide`, which print text (`guide --json` gives one JSON object).
 
 In JSON files on Windows, write the full path with double backslashes
 (`C:\\Users\\<name>\\AppData\\Local\\ER Media ToolKit\\er-cli.exe`); environment variables are not
