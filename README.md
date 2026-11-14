@@ -9,13 +9,13 @@ ER Media ToolKit ("ER"), a desktop app by AudioSpot Creative Tools that converts
 them, asking before anything that installs or changes something on their computer, and end with a short
 report that you are ready (step 6).
 
-Current ER version: 3.0.38. Files of this version (also on the repository's latest release page,
+Current ER version: 3.0.39. Files of this version (also on the repository's latest release page,
 https://github.com/audiospot/er-media-toolkit-ai/releases/latest, with `SHA256SUMS.txt`):
-- macOS app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.38/ER_Media_ToolKit_3.0.38.dmg
-- Windows app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.38/ER_Media_ToolKit_3.0.38_Windows.zip
+- macOS app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.39/ER_Media_ToolKit_3.0.39.dmg
+- Windows app: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.39/ER_Media_ToolKit_3.0.39_Windows.zip
   (the installer is inside)
-- Claude Desktop extension: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.38/ER_Media_ToolKit_3.0.38.mcpb
-- Agent Skill (optional): https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.38/ER_Media_ToolKit_3.0.38_Skill.zip
+- Claude Desktop extension: https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.39/ER_Media_ToolKit_3.0.39.mcpb
+- Agent Skill (optional): https://github.com/audiospot/er-media-toolkit-ai/releases/download/v3.0.39/ER_Media_ToolKit_3.0.39_Skill.zip
 
 ER itself makes no network connection for you and opens no port: you connect to a small program inside
 the installed app, `er-cli`, over MCP (stdio), or run it as a command line.
@@ -59,13 +59,13 @@ What decides it is the MODE you run in, not the app's name:
 
 Run `"PROGRAM" --version` (it prints `er-cli <version>`). If PROGRAM does not exist, ER is not installed,
 or it is a version without the door for assistants: it must be installed or updated. If the version is
-older than 3.0.38, offer the update.
+older than 3.0.39, offer the update.
 - Ask the person first. Then download the file for their system (above) and check it against
   `SHA256SUMS.txt`.
 - macOS: open the .dmg for the person (`open <file>.dmg`): macOS shows ER's licence agreement; the person
   reads it and clicks Agree, then drags ER Media ToolKit onto Applications (replacing an older ER keeps its
   settings and setups: they are not inside the app). Then detach the disk image.
-- Windows: extract the zip and open the `ER Media ToolKit_3.0.38_x64-setup.exe` inside for the
+- Windows: extract the zip and open the `ER Media ToolKit_3.0.39_x64-setup.exe` inside for the
   person: the installer shows ER's licence agreement; the person clicks I Agree and finishes the
   installation (per user, no administrator rights).
 - Never accept the licence agreement for the person, and never install silently.
