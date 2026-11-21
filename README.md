@@ -149,8 +149,9 @@ Say in a few lines, in their language:
 - what they can ask now, for example: "what is the frame rate, timecode and audio of this clip?",
   "convert these 40 interviews with my 'Avid suite' setup", "same as that setup but 25 fps into
   Exports/Client", "check that every result is as long as its source", "cut this video to my final mix by its
-  time stamp, with a black head and a 2-pop" (a Cut & Deliver copy, MediaER Pro), "rename my setup", "set
-  ProResER to ProRes 422 HQ", "undo what you changed this morning";
+  time stamp, with a black head and a 2-pop" (a Cut & Deliver copy, MediaER Pro), "now make my Cut & Deliver copy
+  end two frames earlier" (it continues from your page, and you watch it), "rename my setup", "set ProResER to
+  ProRes 422 HQ", "undo what you changed this morning";
 - how ER keeps their work safe: you always show a preview first and act only after they agree; a file
   whose name already exists is replaced only when they say so, and their source files never; jobs run in
   the ER window, in the tool's queue, where they can watch and Abort them as always; you ask whether to
